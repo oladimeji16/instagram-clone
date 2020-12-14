@@ -8,7 +8,7 @@ const firebaseApp = firebase.initializeApp ({
     messagingSenderId: "472376501181",
     appId: "1:472376501181:web:6b0b95fcd4e0f289a128d4",
     measurementId: "G-CTX30J1WH5"
-})
+});
 
 const db = firebaseApp.firestore()
 const auth = firebase.auth()
@@ -16,4 +16,4 @@ const storage = firebase.storage()
 
 
 
-export default { db, auth, storage }
+export { db, auth, storage }

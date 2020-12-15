@@ -29,3 +29,35 @@
 .post__text {
     padding: 20px;
 }
+
+.posts__comments {
+    padding: 20px;
+    border-top: 1px solid lightgray;
+    opacity: 50%;
+}
+
+.post__commentBox {
+    display: flex;
+    margin-top: 10px;
+}
+.post__input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    border-top: 1px solid lightgray;
+    margin-right: 10px;
+    margin-bottom: 5px;
+
+}
+
+.post__button {
+    flex: 0;
+    border: none;
+    border-top: 1px solid lightgray;
+    background-color: #6082a3;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 5px;
+
+}

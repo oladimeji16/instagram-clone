@@ -7,12 +7,15 @@
 }
 
 .app__header{
+  position: sticky;
+  top: 0;
   background-color: white;
   object-fit: contain;
   padding: 20px;
   border-bottom: 1px solid lightgray;
   display: flex;
   justify-content: space-between;
+  z-index: 1;
 }
 
 .app__signup {
@@ -23,5 +26,15 @@
 
 .app__headerImage {
   object-fit: contain;
+}
+
+.app__posts {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.app__postsRight {
+  margin-left: 20px;
 }
 

@@ -1,6 +1,8 @@
-import { Button, Input, makeStyles, Modal } from '@material-ui/core';
 import React, { useState, useEffect } from 'react'
+
+import { Button, Input, makeStyles, Modal } from '@material-ui/core';
 import ImageUpload from './components/ImageUpload'
+import InstagramEmbed from 'react-instagram-embed'
 
 import './App.css';
 
@@ -131,7 +133,6 @@ function App() {
 
             <Button type='submit' onClick={signUp}>Sign up</Button>
           </form>
-
         </div>
 
       </Modal>
@@ -193,22 +194,48 @@ function App() {
             )
         }
       </div>
-      {
-        posts.map(({ id, post }) => (
-          <Post
-            key={id}
-            username={post.username}
-            caption={post.caption}
-            imgUrl={post.imgUrl}
+
+      <div className="app__posts">
+        <div className="app__postsleft">
+          {
+            posts.map(({ id, post }) => (
+              <Post
+                key={id}
+                postId={id}
+                userCommented = {user}
+                username={post.username}
+                caption={post.caption}
+                imgUrl={post.imageUrl}
+              />
+            ))
+          }
+        </div>
+
+        <div className="app__postsRight">
+          <InstagramEmbed
+            url='https://www.instagram.com/p/Br5ek3UhKsM/'
+            clientAccessToken='123|456'
+            maxWidth={320}
+            hideCaption={false}
+            containerTagName='div'
+            protocol=''
+            injectScript
+            onLoading={() => { }}
+            onSuccess={() => { }}
+            onAfterRender={() => { }}
+            onFailure={() => { }}
           />
-        ))
-      }
+
+        </div>
+      </div>
 
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />
       ) : (
-          <h3>Sorry you need to log In to upload</h3>
+          <h5>Sorry you need to log In to upload</h5>
         )}
+
+
     </div>
   );
 }

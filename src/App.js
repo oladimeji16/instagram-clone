@@ -1,5 +1,7 @@
 import { Button, Input, makeStyles, Modal } from '@material-ui/core';
 import React, { useState, useEffect } from 'react'
+import ImageUpload from './components/ImageUpload'
+
 import './App.css';
 
 import Post from './components/Post';
@@ -81,7 +83,6 @@ function App() {
 
 
   }
-
   const signIn = (e) => {
     e.preventDefault()
 
@@ -91,6 +92,16 @@ function App() {
   }
   return (
     <div className="App">
+      {user?.displayName ?(
+        <ImageUpload username={user.displayName} />
+      ): (
+        <h3>Sorry you need to log In to upload</h3>
+      )}
+     
+
+      {/* caption input */}
+      {/* file picker */}
+      {/* Post Button */}
 
       <Modal
         open={open}

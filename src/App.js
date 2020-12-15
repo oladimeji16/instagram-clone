@@ -232,7 +232,7 @@ function App() {
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />
       ) : (
-          <h5>Sorry you need to log In to upload</h5>
+          <h3>Sorry you need to log In to upload</h3>
         )}
 
 

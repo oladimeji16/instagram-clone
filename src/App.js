@@ -58,7 +58,7 @@ function App() {
   }, [user, username])
 
   useEffect(() => {
-    db.collection('posts').onSnapshot(snapshot => {
+    db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
       setPosts(snapshot.docs.map(doc => ({
         id: doc.id,
         post: doc.data()
@@ -79,7 +79,7 @@ function App() {
       })
       .catch((err) => alert(err.message))
 
-      setOpen(false)
+    setOpen(false)
 
 
   }
@@ -87,18 +87,11 @@ function App() {
     e.preventDefault()
 
     auth.signInWithEmailAndPassword(email, password)
-    .catch(err => alert(err.message))
+      .catch(err => alert(err.message))
     setOpenSignIn(false)
   }
   return (
     <div className="App">
-      {user?.displayName ?(
-        <ImageUpload username={user.displayName} />
-      ): (
-        <h3>Sorry you need to log In to upload</h3>
-      )}
-     
-
       {/* caption input */}
       {/* file picker */}
       {/* Post Button */}
@@ -182,24 +175,24 @@ function App() {
           src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
           alt=""
         />
-      </div>
 
-      {
-        user ? (
-          <Button
-            onClick={() => auth.signOut()}
-          >Log Out</Button>
-        ) : (
-            <div className="app__loginContainer">
-              <Button
-                onClick={() => setOpenSignIn(true)}
-              >Sign In</Button>
-              <Button
-                onClick={() => setOpen(true)}
-              >Sign Up</Button>
-            </div>
-          )
-      }
+        {
+          user ? (
+            <Button
+              onClick={() => auth.signOut()}
+            >Log Out</Button>
+          ) : (
+              <div className="app__loginContainer">
+                <Button
+                  onClick={() => setOpenSignIn(true)}
+                >Sign In</Button>
+                <Button
+                  onClick={() => setOpen(true)}
+                >Sign Up</Button>
+              </div>
+            )
+        }
+      </div>
       {
         posts.map(({ id, post }) => (
           <Post
@@ -210,6 +203,12 @@ function App() {
           />
         ))
       }
+
+      {user?.displayName ? (
+        <ImageUpload username={user.displayName} />
+      ) : (
+          <h3>Sorry you need to log In to upload</h3>
+        )}
     </div>
   );
 }

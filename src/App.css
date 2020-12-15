@@ -11,11 +11,17 @@
   object-fit: contain;
   padding: 20px;
   border-bottom: 1px solid lightgray;
+  display: flex;
+  justify-content: space-between;
 }
 
 .app__signup {
   display: flex;
   flex-direction: column;
   padding: 10px;
+}
+
+.app__headerImage {
+  object-fit: contain;
 }
 
